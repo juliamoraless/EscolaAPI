@@ -57,5 +57,15 @@ namespace EscolaAPI.Application.Services
             }
 
         }
+
+        public void DeleteTurmas(int id)
+        {
+            Turma turmaRemovida = RepoTurma.GetById(id);
+            if(turmaRemovida != null)
+            {
+                RepoTurma.Delete(turmaRemovida);
+            }
+        
+        }
     }
 }
