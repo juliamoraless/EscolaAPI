@@ -1,9 +1,10 @@
+using EscolaAPI.Domain.Interfaces;
 using EscolaAPI.Domain.Models;
 using EscolaAPI.Infra.Context;
 
 namespace EscolaAPI.Infra.Repositories
 {
-    public class BaseRepositorio<T> where T : EntidadeBase
+    public class BaseRepositorio<T> : IBaseRepositorio<T> where T : EntidadeBase
     {   
         public readonly EscolaContext BancoDeDados;
 

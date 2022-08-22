@@ -5,6 +5,7 @@ using EscolaAPI.Application.Services;
 using EscolaAPI.Infra.Repositories;
 using EscolaAPI.Configuration;
 using BiliotecaAPI.Configuration;
+using EscolaAPI.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +21,11 @@ builder.Services.AddTransient<AlunoService>();
 builder.Services.AddTransient<TurmaService>();
 builder.Services.AddTransient<ProfessorService>();
 builder.Services.AddTransient<DisciplinaService>();
-builder.Services.AddTransient<DisciplinaRepositorio>();
-builder.Services.AddTransient<ProfessorRepositorio>();
-builder.Services.AddTransient<AlunoRepositorio>();
-builder.Services.AddTransient<TurmaRepositorio>();
+builder.Services.AddTransient<IDisciplinaRepositorio, DisciplinaRepositorio>();
+builder.Services.AddTransient<IProfessorRepositorio, ProfessorRepositorio>();
+builder.Services.AddTransient<IAlunoRepositorio, AlunoRepositorio>();
+builder.Services.AddTransient<ITurmaRepositorio, TurmaRepositorio>();
+builder.Services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddApplication();
 var Configuration = builder.Configuration;
 builder.Services.AddTokenConfiguration(Configuration);

@@ -9,6 +9,7 @@ namespace EscolaAPI.Infra.Context
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<Turma> Turmas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public EscolaContext(DbContextOptions<EscolaContext> context) : base(context)
         {
@@ -37,6 +38,31 @@ namespace EscolaAPI.Infra.Context
                 .HasOne(t => t.Disciplina) //1 turma tem 1 disciplina que tem muitas turmas
                     .WithMany(d => d.Turmas)
                         .HasForeignKey(t => t.DisciplinaId);
+
+            builder.Entity<Usuario>().HasData(new Usuario()
+            {
+                Id = 1,
+                Nome = "Julia",
+                Senha = "julia123",
+                Cargo = "Administrador"
+            });
+            builder.Entity<Usuario>().HasData(new Usuario()
+            {
+                Id = 2,
+                Nome = "Rafael",
+                Senha = "rafael123",
+                Cargo = "Funcionario"
+            });
+            builder.Entity<Disciplina>().HasData(new Disciplina()
+            {
+                Nome = "Matematica",
+                Id = 1
+            });
+            builder.Entity<Professor>().HasData(new Professor()
+            {
+                Nome = "Fabio",
+                Id = 1
+            });
 
         }
 

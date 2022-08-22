@@ -2,16 +2,16 @@ using AutoMapper;
 using EscolaAPI.Application.DTOs;
 using EscolaAPI.Infra.Repositories;
 using EscolaAPI.Domain.Models;
-
+using EscolaAPI.Domain.Interfaces;
 
 namespace EscolaAPI.Application.Services
 {
     public class DisciplinaService
     {
-        private readonly DisciplinaRepositorio RepoDisciplina;
+        private readonly IDisciplinaRepositorio RepoDisciplina;
         private readonly IMapper Mapper;
 
-        public DisciplinaService(DisciplinaRepositorio repoDisciplina, IMapper mapper)
+        public DisciplinaService(IDisciplinaRepositorio repoDisciplina, IMapper mapper)
         {
             RepoDisciplina = repoDisciplina;
             Mapper = mapper;

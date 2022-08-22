@@ -1,10 +1,11 @@
+using EscolaAPI.Domain.Interfaces;
 using EscolaAPI.Domain.Models;
 using EscolaAPI.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace EscolaAPI.Infra.Repositories
 {
-    public class TurmaRepositorio : BaseRepositorio<Turma>
+    public class TurmaRepositorio : BaseRepositorio<Turma>, ITurmaRepositorio
     {
         public TurmaRepositorio(EscolaContext BancoDeDados) : base (BancoDeDados)
         {

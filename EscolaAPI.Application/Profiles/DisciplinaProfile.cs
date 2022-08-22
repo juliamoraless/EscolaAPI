@@ -8,7 +8,7 @@ namespace EscolaAPI.Application.Profiles
     {
         public DisciplinaProfile()
         {
-            CreateMap<DisciplinaComNomeDTO, Disciplina>().ReverseMap();
+            CreateMap<Disciplina, DisciplinaComNomeDTO>().ReverseMap();
             CreateMap<Disciplina, DisciplinaGetDTO>();
         }
     }

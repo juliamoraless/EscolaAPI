@@ -2,16 +2,17 @@ using AutoMapper;
 using EscolaAPI.Infra.Repositories;
 using EscolaAPI.Application.DTOs;
 using EscolaAPI.Domain.Models;
+using EscolaAPI.Domain.Interfaces;
 
 namespace EscolaAPI.Application.Services
 {
     public class AlunoService
     {
-        private readonly AlunoRepositorio RepoAluno;
-        private readonly TurmaRepositorio RepoTurma;
+        private readonly IAlunoRepositorio RepoAluno;
+        private readonly ITurmaRepositorio RepoTurma;
         private readonly IMapper Mapper;
 
-        public AlunoService (AlunoRepositorio repoAluno, TurmaRepositorio repoTurma, IMapper mapper)
+        public AlunoService (IAlunoRepositorio repoAluno, ITurmaRepositorio repoTurma, IMapper mapper)
         {
             RepoAluno = repoAluno;
             Mapper = mapper;
@@ -33,11 +34,10 @@ namespace EscolaAPI.Application.Services
 
         public void PostAlunos(AlunoComTurmaDTO alunoDTO)
         {
-            Turma Turma = RepoTurma.GetTurmaByName(alunoDTO.Turma);
+            Turma Turma = RepoTurma.GetTurmaByName(alunoDTO.Turma); 
             if(Turma != null)
             {
                 Aluno aluno = new();
-                //aluno = Mapper.Map<Aluno>(alunoDTO);
                 aluno.Email = alunoDTO.Email;
                 aluno.Nome = alunoDTO.Nome;
                 aluno.Turma = Turma;

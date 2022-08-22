@@ -16,10 +16,10 @@ namespace EscolaAPI.Controller
         // [HttpGet("{Nome}")]
         // public Usuario GetByName(string Nome) => UsuarioService.Get(Nome);
 
-        [HttpGet("{Nome}")]
-        public string Login(string Nome)
+        [HttpGet]
+        public string Login([FromQuery]string Nome, [FromQuery]string Senha)
         {
-            var Usuario = UsuarioService.Get(Nome); 
+            var Usuario = UsuarioService.Get(Nome, Senha); 
             return UsuarioService.GenerateToken(Usuario);
         }
     }

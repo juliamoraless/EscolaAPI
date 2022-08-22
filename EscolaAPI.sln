@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolaAPI.Infra", "EscolaAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolaAPI.Application", "EscolaAPI.Application\EscolaAPI.Application.csproj", "{51F0C834-75A9-4618-A181-18ECA4B2FC57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolaAPI.Testes", "EscolaAPI.Testes\EscolaAPI.Testes.csproj", "{84AAD306-8C66-43B1-A08D-70DC4A4A6F68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{51F0C834-75A9-4618-A181-18ECA4B2FC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51F0C834-75A9-4618-A181-18ECA4B2FC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51F0C834-75A9-4618-A181-18ECA4B2FC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84AAD306-8C66-43B1-A08D-70DC4A4A6F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84AAD306-8C66-43B1-A08D-70DC4A4A6F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84AAD306-8C66-43B1-A08D-70DC4A4A6F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84AAD306-8C66-43B1-A08D-70DC4A4A6F68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

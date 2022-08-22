@@ -1,4 +1,5 @@
 using AutoMapper;
+using EscolaAPI.Domain.Interfaces;
 using EscolaAPI.Domain.Models;
 using EscolaAPI.Infra.Repositories;
 
@@ -6,12 +7,12 @@ namespace EscolaAPI.Application.Services
 {
     public class TurmaService
     {
-        private readonly TurmaRepositorio RepoTurma;
-        private readonly DisciplinaRepositorio RepoDisciplina;
-        private readonly ProfessorRepositorio RepoProfessor;
+        private readonly ITurmaRepositorio RepoTurma;
+        private readonly IDisciplinaRepositorio RepoDisciplina;
+        private readonly IProfessorRepositorio RepoProfessor;
         private readonly IMapper Mapper;
 
-        public TurmaService (TurmaRepositorio repoTurma, IMapper mapper, DisciplinaRepositorio repoDisciplina, ProfessorRepositorio repoProfessor)
+        public TurmaService (ITurmaRepositorio repoTurma, IMapper mapper, IDisciplinaRepositorio repoDisciplina, IProfessorRepositorio repoProfessor)
         {
             RepoTurma = repoTurma;
             RepoDisciplina = repoDisciplina;
@@ -48,7 +49,6 @@ namespace EscolaAPI.Application.Services
             if(professor != null && disciplina != null)
             {
                 Turma turma = new();
-                //turma = Mapper.Map<Turma>(turmaDTO);
                 turma.Nome = turmaDTO.Nome;
                 turma.Disciplina = disciplina;
                 turma.Professor = professor;

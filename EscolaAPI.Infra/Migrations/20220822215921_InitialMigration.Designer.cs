@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EscolaAPI.Infra.Migrations
 {
     [DbContext(typeof(EscolaContext))]
-    [Migration("20220813020603_CorrecaoPluralProfessor")]
-    partial class CorrecaoPluralProfessor
+    [Migration("20220822215921_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,13 @@ namespace EscolaAPI.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Disciplinas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Matematica"
+                        });
                 });
 
             modelBuilder.Entity("EscolaAPI.Domain.Models.Professor", b =>
@@ -71,9 +78,19 @@ namespace EscolaAPI.Infra.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Professores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Fabio"
+                        });
                 });
 
             modelBuilder.Entity("EscolaAPI.Domain.Models.Turma", b =>
@@ -101,6 +118,44 @@ namespace EscolaAPI.Infra.Migrations
                         .IsUnique();
 
                     b.ToTable("Turmas");
+                });
+
+            modelBuilder.Entity("EscolaAPI.Domain.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Cargo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Senha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cargo = "Administrador",
+                            Nome = "Julia",
+                            Senha = "julia123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cargo = "Funcionario",
+                            Nome = "Rafael",
+                            Senha = "rafael123"
+                        });
                 });
 
             modelBuilder.Entity("EscolaAPI.Domain.Models.Aluno", b =>

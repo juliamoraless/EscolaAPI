@@ -4,7 +4,7 @@
 
 namespace EscolaAPI.Infra.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,15 +22,31 @@ namespace EscolaAPI.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Professor",
+                name: "Professores",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Professor", x => x.Id);
+                    table.PrimaryKey("PK_Professores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cargo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,9 +69,9 @@ namespace EscolaAPI.Infra.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Turmas_Professor_ProfessorId",
+                        name: "FK_Turmas_Professores_ProfessorId",
                         column: x => x.ProfessorId,
-                        principalTable: "Professor",
+                        principalTable: "Professores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -81,6 +97,25 @@ namespace EscolaAPI.Infra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Disciplinas",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { 1, "Matematica" });
+
+            migrationBuilder.InsertData(
+                table: "Professores",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { 1, "Fabio" });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "Id", "Cargo", "Nome", "Senha" },
+                values: new object[,]
+                {
+                    { 1, "Administrador", "Julia", "julia123" },
+                    { 2, "Funcionario", "Rafael", "rafael123" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Alunos_TurmaId",
                 table: "Alunos",
@@ -104,13 +139,16 @@ namespace EscolaAPI.Infra.Migrations
                 name: "Alunos");
 
             migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "Turmas");
 
             migrationBuilder.DropTable(
                 name: "Disciplinas");
 
             migrationBuilder.DropTable(
-                name: "Professor");
+                name: "Professores");
         }
     }
 }

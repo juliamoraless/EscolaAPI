@@ -1,5 +1,6 @@
 using AutoMapper;
 using EscolaAPI.Application.DTOs;
+using EscolaAPI.Domain.Interfaces;
 using EscolaAPI.Domain.Models;
 using EscolaAPI.Infra.Repositories;
 
@@ -7,11 +8,11 @@ namespace EscolaAPI.Application.Services
 {
     public class ProfessorService
     {
-        private readonly ProfessorRepositorio RepoProfessor;
-        private readonly TurmaRepositorio RepoTurma;
+        private readonly IProfessorRepositorio RepoProfessor;
+        private readonly ITurmaRepositorio RepoTurma;
         private readonly IMapper Mapper;
 
-        public ProfessorService(ProfessorRepositorio repoProfessor, IMapper mapper, TurmaRepositorio repoTurma)
+        public ProfessorService(IProfessorRepositorio repoProfessor, IMapper mapper, ITurmaRepositorio repoTurma)
         {
             RepoProfessor = repoProfessor;
             Mapper = mapper;

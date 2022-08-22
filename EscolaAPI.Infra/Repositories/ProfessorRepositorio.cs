@@ -1,9 +1,10 @@
+using EscolaAPI.Domain.Interfaces;
 using EscolaAPI.Domain.Models;
 using EscolaAPI.Infra.Context;
 
 namespace EscolaAPI.Infra.Repositories
 {
-    public class ProfessorRepositorio : BaseRepositorio<Professor>
+    public class ProfessorRepositorio : BaseRepositorio<Professor>, IProfessorRepositorio
     {
         public ProfessorRepositorio(EscolaContext BancoDeDados) : base (BancoDeDados)
         {
