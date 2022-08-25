@@ -5,7 +5,6 @@ namespace EscolaAPI.Domain.Interfaces
     public interface ITurmaRepositorio : IBaseRepositorio<Turma>
     {
         Turma GetTurmaByName(string nome);
-
-        public Turma GetTurmaComTudoById(int id); 
+        Turma GetTurmaComTudoById(int id); 
    }
 }

@@ -29,6 +29,10 @@ namespace EscolaAPI.Controllers
         [Authorize]
         public void PostTurmassC(TurmaPostDTO turmaDTO) => TurmaService.PostTurmas(turmaDTO);
 
+        [HttpPut]
+        [Authorize]
+        public void PutTurmasC(TurmaPutDTO turmaDTO) => TurmaService.PutTurmas(turmaDTO);
+
         [HttpDelete("{id}")]
         [Authorize(Roles = "Administrador")]
         public void DeleteTurmasC(int id)   => TurmaService.DeleteTurmas(id);     

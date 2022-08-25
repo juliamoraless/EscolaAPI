@@ -58,6 +58,20 @@ namespace EscolaAPI.Application.Services
 
         }
 
+        public void PutTurmas(TurmaPutDTO turmaDTO)
+        {
+            Professor professor = RepoProfessor.GetProfessorByName(turmaDTO.Professor); 
+            Disciplina disciplina = RepoDisciplina.GetDisciplinaByName(turmaDTO.Disciplina);
+            Turma turmaAtualizada = RepoTurma.GetById(turmaDTO.Id);
+            if(turmaAtualizada != null)
+            {
+                turmaAtualizada.Nome = turmaDTO.Nome;
+                turmaAtualizada.Professor = professor;
+                turmaAtualizada.Disciplina = disciplina;
+                RepoTurma.Put(turmaAtualizada);
+            }
+        }
+
         public void DeleteTurmas(int id)
         {
             Turma turmaRemovida = RepoTurma.GetById(id);
